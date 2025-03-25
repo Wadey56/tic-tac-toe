@@ -1,4 +1,4 @@
-function gameboard() {
+const gameboard = (() => {
     let gameboard = []
 
     const reset = () => {
@@ -18,8 +18,7 @@ function gameboard() {
     }
 
     return {reset, update};
-}
+})();
 
-let gameboard1 = gameboard();
-gameboard1.reset();
-gameboard1.update(2,2,"X");
+gameboard.reset();
+gameboard.update(2,2,"X");

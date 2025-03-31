@@ -28,7 +28,13 @@ const player = (() => {
         player = player === "X" ? "O" : "X";
         console.log(player);
     }
-    return {player, change};
+
+    const playerTurn = (x, y, player) => {
+        gameboard.update(x, y, player);
+    }
+
+    return {player, change, playerTurn};
 })();
 
 player.change();
+player.playerTurn(2,2,player.player);

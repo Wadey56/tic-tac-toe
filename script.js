@@ -10,7 +10,6 @@ const gameboard = (() => {
         }
         console.log(gameboard);
     }
-    
 
     const update = (x, y, value) => {
         gameboard[x][y] = value;
@@ -22,3 +21,14 @@ const gameboard = (() => {
 
 gameboard.reset();
 gameboard.update(2,2,"X");
+
+const player = (() => {
+    let player = "X";
+    const change = () => {
+        player = player === "X" ? "O" : "X";
+        console.log(player);
+    }
+    return {player, change};
+})();
+
+player.change();

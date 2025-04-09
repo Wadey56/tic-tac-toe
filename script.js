@@ -20,9 +20,8 @@ const gameboard = (() => {
 })();
 
 gameboard.reset();
-gameboard.update(2,2,"X");
 
-const player = (() => {
+function player() {
     let player = "X";
     const change = () => {
         player = player === "X" ? "O" : "X";
@@ -34,7 +33,11 @@ const player = (() => {
     }
 
     return {player, change, playerTurn};
-})();
+};
 
-player.change();
-player.playerTurn(2,2,player.player);
+const player1 = player();
+const player2 = player();
+
+
+// probably need variables for each player to store turn locations?
+// so far i changed the iife to a normal function for 2 instances of player

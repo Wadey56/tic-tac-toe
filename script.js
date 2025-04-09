@@ -29,9 +29,12 @@ gameboard.reset();
 function player() {
     let player = "X";
 
+    const getPlayer = () => {
+        return player;
+    }
+
     const change = () => {
-        player = player === "X" ? "O" : "X";
-        console.log(player);
+        return player = player === "X" ? "O" : "X";
     }
 
     const playerTurn = (x, y, player) => {
@@ -39,9 +42,8 @@ function player() {
 
     }
 
-
     return {
-        getPlayer: () => player, 
+        getPlayer, 
         change, 
         playerTurn};
 };

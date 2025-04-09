@@ -32,7 +32,10 @@ function player() {
         gameboard.update(x, y, player);
     }
 
-    return {player, change, playerTurn};
+    return {
+        getPlayer: () => player, 
+        change, 
+        playerTurn};
 };
 
 const player1 = player();
@@ -40,4 +43,3 @@ const player2 = player();
 
 
 // probably need variables for each player to store turn locations?
-// so far i changed the iife to a normal function for 2 instances of player

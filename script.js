@@ -12,8 +12,13 @@ const gameboard = (() => {
     }
 
     const update = (x, y, value) => {
-        gameboard[x][y] = value;
-        console.log(gameboard);
+        if (gameboard[x][y] !== "") {
+            return console.log("Space already taken");
+        } else {
+            gameboard[x][y] = value;
+            console.log(gameboard);
+        }
+        
     }
 
     return {reset, update};
@@ -23,6 +28,7 @@ gameboard.reset();
 
 function player() {
     let player = "X";
+
     const change = () => {
         player = player === "X" ? "O" : "X";
         console.log(player);
@@ -30,7 +36,9 @@ function player() {
 
     const playerTurn = (x, y, player) => {
         gameboard.update(x, y, player);
+
     }
+
 
     return {
         getPlayer: () => player, 

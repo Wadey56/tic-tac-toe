@@ -56,12 +56,8 @@ const gameboard = (() => {
 
 gameboard.reset();
 
-function player() {
-    let player = "X";
-
-    const getPlayer = () => {
-        return player;
-    }
+function player(value) {
+    let player = value;
 
     const changePlayer = () => {
         return player = player === "X" ? "O" : "X";
@@ -69,17 +65,16 @@ function player() {
 
     const playerTurn = (x, y, player) => {
         gameboard.update(x, y, player);
-
     }
 
     return {
-        getPlayer, 
+        player, 
         changePlayer, 
         playerTurn};
 };
 
-const player1 = player();
-const player2 = player();
+const player1 = player("X");
+const player2 = player("O");
 
 
 // probably need variables for each player to store turn locations?

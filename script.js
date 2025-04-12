@@ -21,7 +21,20 @@ const gameboard = (() => {
         
     }
 
-    return {reset, update};
+    const status = () => {
+        console.log(gameboard);
+        winningCombos = [
+            [gameboard[0][0], gameboard[0][1], gameboard[0][2]],
+            [gameboard[1][0], gameboard[1][1], gameboard[1][2]],
+            [gameboard[2][0], gameboard[2][1], gameboard[2][2]],
+            [gameboard[0][0], gameboard[1][0], gameboard[2][0]],
+            [gameboard[0][1], gameboard[1][1], gameboard[2][1]],
+            [gameboard[0][2], gameboard[1][2], gameboard[2][2]],
+            [gameboard[0][0], gameboard[1][1], gameboard[2][2]],
+        ]
+    }
+
+    return {reset, update, status};
 })();
 
 gameboard.reset();
@@ -53,3 +66,7 @@ const player2 = player();
 
 
 // probably need variables for each player to store turn locations?
+// player2.changePlayer();
+// player1.playerTurn(0, 0, player1.getPlayer());
+// player2.playerTurn(0, 1, player2.getPlayer());
+// player1.playerTurn(0, 2, player1.getPlayer());

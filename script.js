@@ -59,17 +59,12 @@ gameboard.reset();
 function player(value) {
     let player = value;
 
-    const changePlayer = () => {
-        return player = player === "X" ? "O" : "X";
-    }
-
     const playerTurn = (x, y, player) => {
         gameboard.update(x, y, player);
     }
 
     return {
         player, 
-        changePlayer, 
         playerTurn};
 };
 

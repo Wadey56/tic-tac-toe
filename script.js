@@ -17,12 +17,14 @@ const gameboard = (() => {
         } else {
             gameboard[x][y] = value;
             console.log(gameboard);
+            status(value);
         }
         
     }
 
-    const status = () => {
-        console.log(gameboard);
+    const status = (value) => {
+        winningStatus = false;
+
         winningCombos = [
             [gameboard[0][0], gameboard[0][1], gameboard[0][2]],
             [gameboard[1][0], gameboard[1][1], gameboard[1][2]],
@@ -31,7 +33,22 @@ const gameboard = (() => {
             [gameboard[0][1], gameboard[1][1], gameboard[2][1]],
             [gameboard[0][2], gameboard[1][2], gameboard[2][2]],
             [gameboard[0][0], gameboard[1][1], gameboard[2][2]],
+            [gameboard[0][2], gameboard[1][1], gameboard[2][0]]
         ]
+
+        for (let i = 0; i < winningCombos.length; i++) {
+            for (let j = 0; j < winningCombos[i].length; j++) {
+                if (winningCombos[i][j] === value) {
+                    winningStatus = true;
+                } else {
+                    winningStatus = false;
+                    break;
+                }
+            }
+            if (winningStatus === true) {
+                return console.log("Player " + value + " wins!");
+            }
+        }
     }
 
     return {reset, update, status};

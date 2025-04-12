@@ -33,7 +33,7 @@ function player() {
         return player;
     }
 
-    const change = () => {
+    const changePlayer = () => {
         return player = player === "X" ? "O" : "X";
     }
 
@@ -44,7 +44,7 @@ function player() {
 
     return {
         getPlayer, 
-        change, 
+        changePlayer, 
         playerTurn};
 };
 

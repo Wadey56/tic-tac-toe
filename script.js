@@ -19,7 +19,6 @@ const gameboard = (() => {
             console.log(gameboard);
             status(value);
         }
-        
     }
 
     const status = (value) => {
@@ -46,6 +45,7 @@ const gameboard = (() => {
                 }
             }
             if (winningStatus === true) {
+                game.play = false;
                 return console.log("Player " + value + " wins!");
             }
         }
@@ -60,6 +60,9 @@ function player(value) {
     let player = value;
 
     const playerTurn = (x, y, player) => {
+        if (game.play === false) {
+            return;
+        } 
         gameboard.update(x, y, player);
     }
 
@@ -71,8 +74,13 @@ function player(value) {
 const player1 = player("X");
 const player2 = player("O");
 
+const game = (() => {
+    const play = true;
 
-// probably need variables for each player to store turn locations?
+    return {play};
+})();
+
+
 // player2.changePlayer();
 // player1.playerTurn(0, 0, player1.getPlayer());
 // player2.playerTurn(0, 1, player2.getPlayer());

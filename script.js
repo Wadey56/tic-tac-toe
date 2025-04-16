@@ -40,6 +40,8 @@ const gameboard = (() => {
             for (let j = 0; j < winCombos[i].length; j++) {
                 if (winCombos[i][j] === "") {
                     blankSpaces++;
+                    winStatus = false;
+                    break;
                 } else if (winCombos[i][j] === value) {
                     winStatus = true;
                 } else {

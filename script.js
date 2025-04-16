@@ -22,7 +22,8 @@ const gameboard = (() => {
     }
 
     const status = (value) => {
-        winStatus = false;
+        let winStatus = false;
+        let blankSpaces = 0;
 
         winCombos = [
             [gameboard[0][0], gameboard[0][1], gameboard[0][2]],
@@ -37,7 +38,9 @@ const gameboard = (() => {
 
         for (let i = 0; i < winCombos.length; i++) {
             for (let j = 0; j < winCombos[i].length; j++) {
-                if (winCombos[i][j] === value) {
+                if (winCombos[i][j] === "") {
+                    blankSpaces++;
+                } else if (winCombos[i][j] === value) {
                     winStatus = true;
                 } else {
                     winStatus = false;
@@ -47,7 +50,12 @@ const gameboard = (() => {
             if (winStatus === true) {
                 game.play = false;
                 return console.log("Player " + value + " wins!");
-            }
+            } 
+        }
+
+        if (blankSpaces === 0) {
+            game.play = false;
+            return console.log("Draw!");
         }
     }
 

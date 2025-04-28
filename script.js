@@ -13,7 +13,8 @@ const gameboard = (() => {
 
     const update = (x, y, value) => {
         if (gameboard[x][y] !== "") {
-            return console.log("Space already taken");
+            console.log("Space already taken");
+            return false;
         } else {
             gameboard[x][y] = value;
             console.log(gameboard);
@@ -66,23 +67,27 @@ const gameboard = (() => {
 
 gameboard.reset();
 
-function player(value) {
-    let player = value;
+const player = (() => {
+    let player = "X";
 
-    const playerTurn = (x, y, player) => {
+    const playerTurn = (x, y) => {
         if (game.play === false) {
             return;
         } 
-        gameboard.update(x, y, player);
+        tempPosition = gameboard.update(x, y, player);
+        if (tempPosition === false) {
+            return;
+        }
+        player = player === "X" ? "O" : "X";
+        return player;
     }
 
     return {
         player, 
-        playerTurn};
-};
-
-const player1 = player("X");
-const player2 = player("O");
+        playerTurn
+    };
+})();
+// in progress of moving player to iffe and swapping between x and o before commit
 
 const game = (() => {
     const play = true;

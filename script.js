@@ -51,27 +51,28 @@ const gameboard = (() => {
                 }
             }
             if (winStatus === true) {
-                game.play = false;
+                game.status = false;
                 return console.log("Player " + value + " wins!");
             } 
         }
 
         if (blankSpaces === 0) {
-            game.play = false;
+            game.status = false;
             return console.log("Draw!");
         }
     }
 
-    return {reset, update, status};
+    return {
+        reset, 
+        update, 
+        status};
 })();
-
-gameboard.reset();
 
 const player = (() => {
     let player = "X";
 
     const playerTurn = (x, y) => {
-        if (game.play === false) {
+        if (game.status === false) {
             return;
         } 
         tempPosition = gameboard.update(x, y, player);
@@ -83,20 +84,24 @@ const player = (() => {
     }
 
     return {
-        player, 
         playerTurn
     };
 })();
-// in progress of moving player to iffe and swapping between x and o before commit
 
 const game = (() => {
-    const play = true;
+    let status = false;
+    const setStatus = (value) => {
+        status = value;
+    }
 
-    return {play};
+    const play = () => {
+        gameboard.reset();
+        setStatus(true);
+        return status;
+    }
+
+    return {
+        setStatus,
+        play
+    };
 })();
-
-
-// player2.changePlayer();
-// player1.playerTurn(0, 0, player1.getPlayer());
-// player2.playerTurn(0, 1, player2.getPlayer());
-// player1.playerTurn(0, 2, player1.getPlayer());

@@ -71,7 +71,7 @@ const gameboard = (() => {
 const player = (() => {
     let player = "X";
 
-    const playerTurn = (x, y) => {
+    const turn = (x, y) => {
         if (game.status === false) {
             return;
         } 
@@ -84,7 +84,7 @@ const player = (() => {
     }
 
     return {
-        playerTurn
+        turn
     };
 })();
 

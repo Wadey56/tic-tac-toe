@@ -56,6 +56,8 @@ const gameboard = (() => {
             } 
         }
 
+        console.log(blankSpaces);
+
         if (blankSpaces === 0) {
             game.status = false;
             return console.log("Draw!");
@@ -90,6 +92,11 @@ const player = (() => {
 
 const game = (() => {
     let status = false;
+
+    const getStatus = () => {
+        return status;
+    }
+    
     const setStatus = (value) => { // do some more research as to why this is needed vs not havining it in the player function
         status = value;
     }
@@ -101,7 +108,7 @@ const game = (() => {
     }
 
     return {
-        status,
+        getStatus,
         setStatus,
         play
     };

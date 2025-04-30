@@ -90,7 +90,7 @@ const player = (() => {
 
 const game = (() => {
     let status = false;
-    const setStatus = (value) => {
+    const setStatus = (value) => { // do some more research as to why this is needed vs not havining it in the player function
         status = value;
     }
 
@@ -101,6 +101,7 @@ const game = (() => {
     }
 
     return {
+        status,
         setStatus,
         play
     };

@@ -24,7 +24,6 @@ const gameboard = (() => {
 
     const status = (value) => {
         let winStatus = false;
-        let blankSpaces = 0;
 
         winCombos = [
             [gameboard[0][0], gameboard[0][1], gameboard[0][2]],
@@ -40,7 +39,6 @@ const gameboard = (() => {
         for (let i = 0; i < winCombos.length; i++) {
             for (let j = 0; j < winCombos[i].length; j++) {
                 if (winCombos[i][j] === "") {
-                    blankSpaces++;
                     winStatus = false;
                     break;
                 } else if (winCombos[i][j] === value) {
@@ -56,12 +54,15 @@ const gameboard = (() => {
             } 
         }
 
-        console.log(blankSpaces);
-
-        if (blankSpaces === 0) {
-            game.status = false;
-            return console.log("Draw!");
+        for (let i = 0; i < gameboard.length; i++) {
+            for (let j = 0; j < gameboard[i].length; j++) {
+                if (gameboard[i][j] === "") {
+                    return;
+                }
+            }
         }
+        game.status = false;
+        return console.log("Draw!");
     }
 
     return {
@@ -96,8 +97,8 @@ const game = (() => {
     const getStatus = () => {
         return status;
     }
-    
-    const setStatus = (value) => { // do some more research as to why this is needed vs not havining it in the player function
+
+    const setStatus = (value) => { // this is needed as status is ref'd outside of game
         status = value;
     }
 

@@ -1,6 +1,7 @@
 const gameboard = (() => {
     let gameboard = []
 
+    // set a 3x3 board w/ loop
     const reset = () => {
         for (let i = 0; i < 3; i++) {
             gameboard[i] = [];
@@ -11,6 +12,7 @@ const gameboard = (() => {
         console.log(gameboard);
     }
 
+    // update board based on user input
     const update = (x, y, value) => {
         if (gameboard[x][y] !== "") {
             console.log("Space already taken");
@@ -22,9 +24,11 @@ const gameboard = (() => {
         }
     }
 
+    // check for win or draw
     const status = (value) => {
         let winStatus = false;
 
+        // all possible tic-tac-toe win combinations
         winCombos = [
             [gameboard[0][0], gameboard[0][1], gameboard[0][2]],
             [gameboard[1][0], gameboard[1][1], gameboard[1][2]],
@@ -36,24 +40,26 @@ const gameboard = (() => {
             [gameboard[0][2], gameboard[1][1], gameboard[2][0]]
         ]
 
+        // loop through each win combination
         for (let i = 0; i < winCombos.length; i++) {
             for (let j = 0; j < winCombos[i].length; j++) {
-                if (winCombos[i][j] === "") {
+                // if any item in win combo is not player's value skip it
+                if (winCombos[i][j] !== value) { 
                     winStatus = false;
                     break;
-                } else if (winCombos[i][j] === value) {
+                // if all items in win combo are player's value
+                } else if (winCombos[i][j] === value) { 
                     winStatus = true;
-                } else {
-                    winStatus = false;
-                    break;
-                }
+                } 
             }
-            if (winStatus === true) {
+            // if winStatus is true after any win combo end game
+            if (winStatus === true) { 
                 game.status = false;
                 return console.log("Player " + value + " wins!");
             } 
         }
 
+        // check for draw (no empty spaces left)
         for (let i = 0; i < gameboard.length; i++) {
             for (let j = 0; j < gameboard[i].length; j++) {
                 if (gameboard[i][j] === "") {
@@ -74,14 +80,17 @@ const gameboard = (() => {
 const player = (() => {
     let player = "X";
 
+    // player turn coordinates for gameboard
     const turn = (x, y) => {
         if (game.status === false) {
             return;
         } 
         tempPosition = gameboard.update(x, y, player);
+        // account for spaces taken
         if (tempPosition === false) {
             return;
         }
+        // switch player
         player = player === "X" ? "O" : "X";
         return player;
     }

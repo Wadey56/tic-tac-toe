@@ -61,3 +61,10 @@ h1, h2, h3, h4, h5, h6 {
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
 }
+
+.gameboard-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 4rem;
+}

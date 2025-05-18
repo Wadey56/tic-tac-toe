@@ -47,6 +47,13 @@ h1, h2, h3, h4, h5, h6 {
   height: 100vh;
 }
 
+#title {
+  grid-area: 1 / 1 / 2 / -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 #gameboard {
   grid-area: 2 / 2 / 3 / 3;
   margin: 4rem;

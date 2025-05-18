@@ -126,12 +126,18 @@ const game = (() => {
 
 const DOM = (() => {
     const gameboard = document.getElementById("gameboard");
+    const playbtn = document.getElementById("playbtn");
 
-    gameboard.addEventListener("click", (e) => { // event listender for whole gameboard
-        let coordinates = e.target.id.split("-"); // separate cell id for coordinates
+    playbtn.addEventListener("click", () => {
+        game.play();
+    })
+
+    // event listender for whole gameboard
+    gameboard.addEventListener("click", (e) => { 
+        // separate cell id for coordinates
+        let coordinates = e.target.id.split("-"); 
         let x = Number(coordinates[0]);
         let y = Number(coordinates[1]);
-        game.play();
         player.turn(x, y);
     })
 

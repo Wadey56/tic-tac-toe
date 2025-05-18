@@ -32,3 +32,21 @@ p {
 h1, h2, h3, h4, h5, h6 {
   text-wrap: balance;
 }
+
+/* custom css below */
+
+* {
+  border: 1px solid red;
+}
+
+#gameboard-container {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  gap: 1rem;
+}
+
+#gameboard {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}

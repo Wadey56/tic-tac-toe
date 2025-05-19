@@ -90,9 +90,9 @@ const player = (() => {
         if (tempPosition === false) {
             return;
         }
+        cell.textContent = player;
         // switch player
         player = player === "X" ? "O" : "X";
-        cell.textContent = player;
         return player;
     }
 

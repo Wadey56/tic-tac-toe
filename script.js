@@ -54,7 +54,7 @@ const gameboard = (() => {
             }
             // if winStatus is true after any win combo end game
             if (winStatus === true) { 
-                game.status = false;
+                game.setStatus(false);
                 return console.log("Player " + value + " wins!");
             } 
         }
@@ -67,7 +67,7 @@ const gameboard = (() => {
                 }
             }
         }
-        game.status = false;
+        game.setStatus(false);
         return console.log("Draw!");
     }
 
@@ -82,7 +82,7 @@ const player = (() => {
 
     // player turn coordinates for gameboard
     const turn = (x, y, cell) => {
-        if (game.status === false) {
+        if (game.getStatus() === false) {
             return;
         } 
         tempPosition = gameboard.update(x, y, player);
@@ -110,6 +110,7 @@ const game = (() => {
 
     const setStatus = (value) => { // this is needed as status is ref'd outside of game
         status = value;
+        return status
     }
 
     const play = () => {

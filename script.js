@@ -81,7 +81,7 @@ const player = (() => {
     let player = "X";
 
     // player turn coordinates for gameboard
-    const turn = (x, y) => {
+    const turn = (x, y, cell) => {
         if (game.status === false) {
             return;
         } 
@@ -92,6 +92,7 @@ const player = (() => {
         }
         // switch player
         player = player === "X" ? "O" : "X";
+        cell.textContent = player;
         return player;
     }
 
@@ -135,10 +136,15 @@ const DOM = (() => {
     // event listender for whole gameboard
     gameboard.addEventListener("click", (e) => { 
         // separate cell id for coordinates
-        let coordinates = e.target.id.split("-"); 
+        cell = e.target;
+        let coordinates = cell.id.split("-"); 
         let x = Number(coordinates[0]);
         let y = Number(coordinates[1]);
-        player.turn(x, y);
+        player.turn(x, y, cell);
     })
 
 })();
+
+// notes
+// the game has never been able to have more than one round, it has always been refreshed
+// i need to add in some getters and setters for the gameboard / play state so that the game can be reset

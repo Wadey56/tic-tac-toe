@@ -126,11 +126,16 @@ const game = (() => {
     };
 })();
 
-const DOM = (() => {
+const DOMdisplay = (() => {
     const gameboard = document.getElementById("gameboard");
+    const cells = document.getElementsByClassName("gameboard-item");
     const playbtn = document.getElementById("playbtn");
 
+    // clear display on reset
     playbtn.addEventListener("click", () => {
+        for (let i = 0; i < cells.length; i++) {
+            cells[i].textContent = "";
+        }
         game.play();
     })
 
@@ -143,9 +148,4 @@ const DOM = (() => {
         let y = Number(coordinates[1]);
         player.turn(x, y, cell);
     })
-
 })();
-
-// notes
-// the game has never been able to have more than one round, it has always been refreshed
-// i need to add in some getters and setters for the gameboard / play state so that the game can be reset

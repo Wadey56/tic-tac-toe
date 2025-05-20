@@ -143,7 +143,7 @@ const DOMdisplay = (() => {
     // event listender for whole gameboard
     gameboard.addEventListener("click", (e) => { 
         // separate cell id for coordinates
-        cell = e.target;
+        let cell = e.target;
         let coordinates = cell.id.split("-"); 
         let x = Number(coordinates[0]);
         let y = Number(coordinates[1]);

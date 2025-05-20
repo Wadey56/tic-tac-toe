@@ -135,6 +135,7 @@ const DOMdisplay = (() => {
     playbtn.addEventListener("click", () => {
         for (let i = 0; i < cells.length; i++) {
             cells[i].textContent = "";
+            playbtn.textContent = "Reset";
         }
         game.play();
     })

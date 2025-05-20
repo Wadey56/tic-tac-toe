@@ -55,6 +55,7 @@ const gameboard = (() => {
             // if winStatus is true after any win combo end game
             if (winStatus === true) { 
                 game.setStatus(false);
+                DOMdisplay.showModal("Game Over - Player " + value + " wins!");
                 return console.log("Player " + value + " wins!");
             } 
         }
@@ -68,6 +69,7 @@ const gameboard = (() => {
             }
         }
         game.setStatus(false);
+        DOMdisplay.showModal("Game Over - Draw!");
         return console.log("Draw!");
     }
 
@@ -130,6 +132,7 @@ const DOMdisplay = (() => {
     const gameboard = document.getElementById("gameboard");
     const cells = document.getElementsByClassName("gameboard-item");
     const playbtn = document.getElementById("playbtn");
+    const gameoverModal = document.getElementById("gameover-modal");
 
     // clear display on reset
     playbtn.addEventListener("click", () => {
@@ -149,4 +152,14 @@ const DOMdisplay = (() => {
         let y = Number(coordinates[1]);
         player.turn(x, y, cell);
     })
+
+    const showModal = (text) => {
+        gameoverModal.showModal();
+        gameoverModal.querySelector("p").textContent = text;
+    }
+
+    return {
+        showModal
+    };
+
 })();

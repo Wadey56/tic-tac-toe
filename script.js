@@ -133,14 +133,19 @@ const DOMdisplay = (() => {
     const cells = document.getElementsByClassName("gameboard-item");
     const playbtn = document.getElementById("playbtn");
     const gameoverModal = document.getElementById("gameover-modal");
+    const gameoverPlaybtn = document.getElementById("gameover-playbtn");
+    const gameoverResetbtn = document.getElementById("gameover-resetbtn");
+    const resetbtns = [playbtn, gameoverPlaybtn, gameoverResetbtn];
 
     // clear display on reset
-    playbtn.addEventListener("click", () => {
-        for (let i = 0; i < cells.length; i++) {
-            cells[i].textContent = "";
-            playbtn.textContent = "Reset";
-        }
-        game.play();
+    resetbtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+            for (let i = 0; i < cells.length; i++) {
+                cells[i].textContent = "";
+                playbtn.textContent = "Reset";
+            }
+            game.play();
+        })
     })
 
     // event listender for whole gameboard

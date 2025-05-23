@@ -158,6 +158,17 @@ const DOMdisplay = (() => {
         player.turn(x, y, cell);
     })
 
+    // hover affect to show player position before click
+    gameboard.addEventListener("mouseover", (e) => {
+        let cell = e.target;
+        if (cell.textContent == "") {
+            watermark = document.createElement("p");
+            watermark.classList.add("watermark");
+            watermark.textContent = "x"; // to be updated to player
+            cell.appendChild(watermark);
+        }
+    })
+
     const showModal = (text) => {
         gameoverModal.showModal();
         gameoverModal.querySelector("p").textContent = text;

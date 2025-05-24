@@ -98,8 +98,13 @@ const player = (() => {
         return player;
     }
 
+    const getPlayer = () => {
+        return player;
+    }
+
     return {
-        turn
+        turn,
+        getPlayer
     };
 })();
 
@@ -164,10 +169,10 @@ const DOMdisplay = (() => {
         if (cell.textContent == "") {
             watermark = document.createElement("p");
             watermark.classList.add("watermark");
-            watermark.textContent = "x"; // to be updated to player
+            watermark.textContent = player.getPlayer();
             cell.appendChild(watermark);
         }
-    })
+    }) // this is causing a problem with the board thinking a space is already taken in some instances
 
     const showModal = (text) => {
         gameoverModal.showModal();

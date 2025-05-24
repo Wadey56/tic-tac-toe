@@ -157,11 +157,10 @@ const DOMdisplay = (() => {
     gameboard.addEventListener("click", (e) => { 
         // separate cell id for coordinates
         let cell = e.target;
-        console.log(cell);
         if (cell.classList.contains("watermark")) { // prevent watermark from being clicked
-            cell = cell.parentNode;
+            cell.classList.remove("watermark");
+            cell.textContent = "";
         }
-        console.log(cell);
         let coordinates = cell.id.split("-"); 
         let x = Number(coordinates[0]);
         let y = Number(coordinates[1]);
@@ -172,22 +171,13 @@ const DOMdisplay = (() => {
     gameboard.addEventListener("mouseover", (e) => {
         let cell = e.target;
         if (cell.textContent == "") {
-            watermark = document.createElement("p");
-            watermark.classList.add("watermark");
-            watermark.textContent = player.getPlayer();
-            cell.appendChild(watermark);
+            cell.classList.add("watermark");
+            cell.textContent = player.getPlayer();
         }
     })
 
     // remove hover affect when mouse leaves
-    gameboard.addEventListener("mouseout", (e) => {
-        let cell = e.target;
-        if (cell.classList.contains("watermark")) {
-            cell = cell.parentNode;
-        }
-        watermark = cell.querySelector(".watermark");
-        watermark.remove();
-    })
+ 
 
     const showModal = (text) => {
         gameoverModal.showModal();

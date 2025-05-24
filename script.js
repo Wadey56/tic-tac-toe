@@ -177,7 +177,17 @@ const DOMdisplay = (() => {
             watermark.textContent = player.getPlayer();
             cell.appendChild(watermark);
         }
-    }) // this is causing a problem with the board thinking a space is already taken in some instances
+    })
+
+    // remove hover affect when mouse leaves
+    gameboard.addEventListener("mouseout", (e) => {
+        let cell = e.target;
+        if (cell.classList.contains("watermark")) {
+            cell = cell.parentNode;
+        }
+        watermark = cell.querySelector(".watermark");
+        watermark.remove();
+    })
 
     const showModal = (text) => {
         gameoverModal.showModal();

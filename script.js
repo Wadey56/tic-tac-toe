@@ -157,6 +157,11 @@ const DOMdisplay = (() => {
     gameboard.addEventListener("click", (e) => { 
         // separate cell id for coordinates
         let cell = e.target;
+        console.log(cell);
+        if (cell.classList.contains("watermark")) { // prevent watermark from being clicked
+            cell = cell.parentNode;
+        }
+        console.log(cell);
         let coordinates = cell.id.split("-"); 
         let x = Number(coordinates[0]);
         let y = Number(coordinates[1]);

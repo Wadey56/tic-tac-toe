@@ -177,7 +177,13 @@ const DOMdisplay = (() => {
     })
 
     // remove hover affect when mouse leaves
- 
+    gameboard.addEventListener("mouseout", (e) => {
+        let cell = e.target;
+        if (cell.classList.contains("watermark")) {
+            cell.classList.remove("watermark");
+            cell.textContent = "";
+        }
+    })
 
     const showModal = (text) => {
         gameoverModal.showModal();

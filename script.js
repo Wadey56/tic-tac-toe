@@ -95,6 +95,7 @@ const player = (() => {
         cell.textContent = player;
         // switch player
         player = player === "X" ? "O" : "X";
+        DOMdisplay.playerTurn();
         return player;
     }
 
@@ -190,8 +191,14 @@ const DOMdisplay = (() => {
         gameoverModal.querySelector("p").textContent = text;
     }
 
+    const playerTurn = () => {
+        console.log("yes");
+        document.getElementById("player-turn").textContent = "Turn: " + player.getPlayer();
+    }
+
     return {
-        showModal
+        showModal,
+        playerTurn
     };
 
 })();

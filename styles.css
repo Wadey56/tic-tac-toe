@@ -35,6 +35,10 @@ h1, h2, h3, h4, h5, h6 {
 
 /* custom css below */
 
+* {
+  font-family: 'Courier New', Courier, monospace;
+}
+
 #gameboard-container {
   display: flex;
   justify-content: center;
@@ -53,6 +57,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 1rem;
   width: 8vw;
   height: 5vh;
+  min-height: 40px;
   border: 2px solid black;
   border-radius: 0.5rem;
   cursor: pointer;
@@ -105,6 +110,7 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: center;
   align-items: center;
   flex-wrap: nowrap;
+  height: 8vh;
 }
 
 #player-x {
@@ -113,4 +119,40 @@ h1, h2, h3, h4, h5, h6 {
 
 #player-o {
   background-color: #eba749;
+}
+
+#gameover-modal {
+  position: fixed;
+  width: 40vw;
+  height: 25vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  border: 1px solid black;
+  border-radius: 1rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#modal-content {
+  font-size: 4vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4vh;
+}
+
+#modal-content p {
+  color: white;
+  text-shadow: 1px 1px 2px black;
+}
+
+#modal-content button {
+  font-size: 2vh;
+  width: 10vw;
+  height: 6vh;
+  min-height: 40px;
+  border: 2px solid black;
+  border-radius: 0.5rem;
+  cursor: pointer;
 }

@@ -171,7 +171,7 @@ const DOMdisplay = (() => {
     // hover affect to show player position before click
     gameboard.addEventListener("mouseover", (e) => {
         let cell = e.target;
-        if (cell.textContent == "") {
+        if (game.getStatus() === true && cell.textContent == "") {
             cell.classList.add("watermark");
             cell.textContent = player.getPlayer();
         }
@@ -180,7 +180,7 @@ const DOMdisplay = (() => {
     // remove hover affect when mouse leaves
     gameboard.addEventListener("mouseout", (e) => {
         let cell = e.target;
-        if (cell.classList.contains("watermark")) {
+        if (game.getStatus() === true && cell.classList.contains("watermark")) {
             cell.classList.remove("watermark");
             cell.textContent = "";
         }
@@ -192,7 +192,6 @@ const DOMdisplay = (() => {
     }
 
     const playerTurn = () => {
-        console.log("yes");
         document.getElementById("player-turn").textContent = "Turn: " + player.getPlayer();
     }
 
@@ -202,3 +201,8 @@ const DOMdisplay = (() => {
     };
 
 })();
+
+// TODO: 
+// record the score of each player
+// update player cards for rounds won
+// reset should reset the player cards, play continues to next round

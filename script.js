@@ -56,6 +56,7 @@ const gameboard = (() => {
             if (winStatus === true) { 
                 game.setStatus(false);
                 DOMdisplay.showModal("Game Over - Player " + value + " wins!");
+                value === "X" ? game.xScore++ : game.oScore++;
                 return console.log("Player " + value + " wins!");
             } 
         }
@@ -111,6 +112,8 @@ const player = (() => {
 
 const game = (() => {
     let status = false;
+    let xScore = 0;
+    let oScore = 0;
 
     const getStatus = () => {
         return status;
@@ -128,6 +131,8 @@ const game = (() => {
     }
 
     return {
+        xScore,
+        oScore,
         getStatus,
         setStatus,
         play
@@ -142,8 +147,8 @@ const DOMdisplay = (() => {
     const gameoverPlaybtn = document.getElementById("gameover-playbtn");
     const gameoverResetbtn = document.getElementById("gameover-resetbtn");
     const resetbtns = [playbtn, gameoverPlaybtn, gameoverResetbtn];
-
-
+    const playerxScore = document.getElementById("player-x-score");
+    const playeroScore = document.getElementById("player-o-score");
 
     // clear display on reset
     resetbtns.forEach((btn) => {
@@ -152,6 +157,12 @@ const DOMdisplay = (() => {
                 cells[i].textContent = "";
                 playbtn.textContent = "Reset";
                 playbtn.classList.remove("green");
+                if (btn !== gameoverPlaybtn) {
+                    game.xScore = 0;
+                    game.oScore = 0;
+                }
+                playerxScore.textContent = "Player X: " + game.xScore;
+                playeroScore.textContent = "Player O: " + game.oScore;
             }
             game.play();
         })
@@ -204,8 +215,3 @@ const DOMdisplay = (() => {
     };
 
 })();
-
-// TODO: 
-// record the score of each player
-// update player cards for rounds won
-// reset should reset the player cards, play continues to next round

@@ -143,12 +143,15 @@ const DOMdisplay = (() => {
     const gameoverResetbtn = document.getElementById("gameover-resetbtn");
     const resetbtns = [playbtn, gameoverPlaybtn, gameoverResetbtn];
 
+
+
     // clear display on reset
     resetbtns.forEach((btn) => {
         btn.addEventListener("click", () => {
             for (let i = 0; i < cells.length; i++) {
                 cells[i].textContent = "";
                 playbtn.textContent = "Reset";
+                playbtn.classList.remove("green");
             }
             game.play();
         })

@@ -54,7 +54,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #playbtn {
-  font-size: 1rem;
+  font-size: 1vw;
   width: 8vw;
   height: 5vh;
   min-height: 40px;
@@ -102,15 +102,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #player-x, #player-o {
-  font-size: 1rem;  
+  font-size: 1vw;  
   border: 2px solid black;
   border-radius: 1rem;
-  padding: 0.4rem 4rem;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: nowrap;
   height: 8vh;
+  min-height: 40px;
+  width: 20vw;
 }
 
 #player-x {
